@@ -28,20 +28,20 @@ public class EncFilter implements Filter
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException
 	{
 		// System.out.println("doFilter()");
 
 		if (encType != null) // web.xml에 encType이 정의되었다면
 		{
-			request.setCharacterEncoding(encType);
+			req.setCharacterEncoding(encType);
 		} else
 		{
-			request.setCharacterEncoding("UTF-8");
+			req.setCharacterEncoding("UTF-8");
 		}
 		// doFilter와 페이지 연결 하려면
-		chain.doFilter(request, response);
+		chain.doFilter(req, resp);
 		// 다른 필터 혹은 요청 페이지와의 연결 진행
 	}
 }

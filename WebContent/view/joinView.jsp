@@ -6,35 +6,34 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-body 
-{
+body {
 	background-color: #F1C40F;
 }
-div 
-{
+
+div {
 	margin: auto;
 	padding-top: 5%;
 	text-align: center;
 }
-table
-{
+
+table {
 	margin: auto;
-	padding-top:10%;
+	padding-top: 10%;
 	text-align: center;
 }
-
 </style>
 </head>
 <body>
 	<div>
-		<p> 회원가입 </p>
+		<p>회원가입</p>
 	</div>
-	<form>
+	<form action="/dvdProject/control?action=join" method="post">
 		<table>
 
 			<tr>
 				<td>email</td>
 				<td><input type="text" name="email"></td>
+
 			</tr>
 
 			<tr>
@@ -46,12 +45,12 @@ table
 				<td>비밀번호</td>
 				<td><input type="password" name="pass"></td>
 			</tr>
-			
+
 			<tr>
 				<td>주소</td>
 				<td><input type="text" name="addr"></td>
 			</tr>
-			
+
 			<tr>
 				<td>연락처</td>
 				<td><input type="text" name="tel" value="숫자만 입력"></td>

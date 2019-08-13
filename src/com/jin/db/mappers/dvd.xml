@@ -4,6 +4,11 @@
 <!-- dvd.xml -->
 <sqlMap namespace="dvd">
  
+<insert id="insert">
+	insert into CustomerTable
+	values(#customerEmail#, #customerName#, #customerPass#, #customerAddr#, #customerTel#, 'N')
+</insert> 
+ 
 <select id="AllMovie" resultClass="com.jin.vo.MovieVO">
 	select MovieName
 	from MovieTable
