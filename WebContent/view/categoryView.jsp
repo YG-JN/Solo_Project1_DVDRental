@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -12,14 +13,14 @@
 <head>
 <meta charset="UTF-8">
 <title>카테고리</title>
-<script type="text/javascript">
-
-</script>
 
 <style type="text/css">
 body {
-	background-color: #F1C40F
+	background-color: #F1C40F;
+	text-align: center;
 }
+table{margin: auto;}
+td,th{padding: 5px}
 </style>
 </head>
 <body>
@@ -28,6 +29,27 @@ body {
 	</div>
 	
 	<div style="float: center; width: 100%; height: 70%; background-Color: white">
-		<p></p>
+		<table border="1">
+			<tr>
+				<th>영화번호</th>
+				<th>영화장르</th>
+				<th>영화명</th>
+				<th>영화감독</th>
+				<th>주연배우</th>
+				<th>개봉일</th>
+			</tr>
+			<c:forEach items="list" var="movieList">
+			<tr>
+				<td>${movieList.MovieNum }</td>
+				<td>${movieList.MovieGenre }</td>
+				<td>${movieList.MovieName }</td>
+				<td>${movieList.MovieDirector }</td>
+				<td>${movieList.MovieActor }</td>
+				<td>${movieList.MovieOpenDate }</td>
+				<td><input type="button" value="구매"/></td>
+			</tr>
+			</c:forEach>
+			
+		</table>
 	</div>
 </body>

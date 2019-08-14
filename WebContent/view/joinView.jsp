@@ -53,12 +53,13 @@ table {
 
 			<tr>
 				<td>연락처</td>
-				<td><input type="text" name="tel" value="숫자만 입력"></td>
+				<td><input type="text" name="tel" placeholder="숫자만 입력"/></td>
 			</tr>
 
 			<tr>
-				<td colspan="2"><input type="submit" value="가입"> <input
-					type="reset" value="취소"></td>
+				<td colspan="3"><input type="submit" value="가입"> 
+				<!-- <input type="reset" value="취소"> -->
+				<input type="reset" value="이전페이지" value="BACK" onClick="history.go(-1)"></td>
 			</tr>
 		</table>
 	</form>

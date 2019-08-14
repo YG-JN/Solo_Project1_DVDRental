@@ -28,6 +28,8 @@ public class CustomerVO
 
 
 
+
+
 	public String getCustomerEmail() {
 		return customerEmail;
 	}

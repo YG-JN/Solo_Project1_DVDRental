@@ -3,169 +3,36 @@
        "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <!-- dvd.xml -->
 <sqlMap namespace="dvd">
- 
-<insert id="insert">
-	insert into CustomerTable
-	values(#customerEmail#, #customerName#, #customerPass#, #customerAddr#, #customerTel#, 'N')
-</insert> 
- 
-<select id="AllMovie" resultClass="com.jin.vo.MovieVO">
-	select MovieName
-	from MovieTable
-</select>
 
+	<insert id="insert">
+		insert into CustomerTable
+		values(#customerEmail#,	#customerName#, #customerPass#, #customerAddr#, #customerTel#, 'N')
+	</insert>
 
+	<select id="login" resultClass="int">
+		select count(*)
+		from CustomerTable
+		where customerEmail = #customerEmail# and customerPass = #customerPass#
+	</select>
 
+	<select id="selectName" resultClass="String">
+		select CustomerName
+		from
+		CustomerTable
+		where customerEmail = #customerEmail#
+	</select>
 
+	<select id="AllMovieTitle" resultClass="com.jin.vo.MovieVO">
+		select MovieName
+		from
+		MovieTable
+	</select>
 
+	<select id="AllMovieInfo" resultClass="com.jin.vo.MovieVO">
+		select *
+		from MovieTable
+	</select>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-   <select id="selectKeyword"  parameterClass="String" 
-             resultClass="String">
-      select ename
-      from   emp
-      where  upper(ename) like upper(#keyword# || '%') 
-   </select>
-   
-    resultClass="com.encore.s0729.vo.Emp"  
-                  클래스가 반드시 존재해야 하며
-                 클래스내에  기본생성자가 반드시 정의되어 있어야 함!! 
-                 
-   
-      DAO ==>     Guest guest = new Guest();
-                  smc.queryForObject('you', guest); 
-   
-   
-      <select id='you'   paramterClass="vo.Guest"   resultClass="vo.Emp">
-         select ename ~
-      </select>
-      
-      iBatis ==>  Emp emp = new Emp();  ※ 기본생성자 호출 주의
-                   emp.setEname(rs.getString("ename"));
-                  return emp;
-      
-      <select resultClass="java.util.HashMap">
-         select ename ~
-      </select>
-   
-      iBatis ==> HashMap map = new HashMap(); 
-                                                             ※ resultClass속성에 인터페이스 또는 추상클래스 올수 없음
-                       map.put("ename", rs.getString("ename"));
-                 return map;                       
-                    
-                 
-   <select id="selectEmpInfo" resultClass="java.util.HashMap"
-                              parameterClass="String">
-      select empno, ename , 
-             to_char(hiredate,'yyyy"년 "mm"월 "dd"일"')  hiredate ,dname
-      from  emp  join dept
-      on   emp.deptno = dept.deptno
-      where  ename=#ename#     
-   </select>
-   
-   전체 사원이름 조회
-   
-   
-   <select id="selectNames" resultClass="String">
-      select ename
-      from   emp
-   </select>
-   
-    특정 번호 부서의  사원정보(사원번호, 사원명, 입사일)
-   <select id="selectDeptInfo" 
-           resultClass="com.encore.s0730.vo.Emp"
-           parameterClass="int">
-      select empno, ename, hiredate 
-      from  emp
-      where deptno=#deptno#
-   </select>
-   
-   최소 부서번호 조회하기
-   <select id = "selectMinDeptno" resultClass="int">
-   		select min(deptno)
-   		from dept
-   </select>
-   
-   비슷한 사원명 8/1
-   <select id="info" resultClass="com.encore.s0801.vo.EmpInfo"
-                     parameterClass="java.util.Map">
-                     
-      select empno, ename, hiredate, dname, job
-      from  emp join dept
-      on   emp.deptno = dept.deptno
-      <isNotNull property="ename">where lower(ename) like lower(#ename#)</isNotNull>
-      Map에 'ename'키가 존재한다면
-      
-      <isNotNull property="dname">where lower(dname) like lower(#dname#)</isNotNull>
-      <isNotNull property="job">where lower(job) like lower(#job#)</isNotNull>
-   </select> 
-    
-    
-   사원명 기준으로 조회
-   <select id="info1" resultClass="com.encore.s0801.vo.EmpInfo">
-      select empno, ename, hiredate, dname, job
-      from  emp join dept
-      on   emp.deptno = dept.deptno
-      where lower(ename) like lower(#keyword#)
-   </select>
-    
-    
-   부서명 기준으로 조회 
-   <select id="info2" resultClass="com.encore.s0801.vo.EmpInfo">
-      select empno, ename, hiredate, dname, job
-      from  emp join dept
-      on   emp.deptno = dept.deptno
-      where lower(dname) like lower(#keyword#)
-   </select>
-   
-   
-   직책명 기준으로 조회 
-   <select id="info3" resultClass="com.encore.s0801.vo.EmpInfo">
-      select empno, ename, hiredate, dname, job
-      from  emp join dept
-      on   emp.deptno = dept.deptno
-      where lower(job) like lower(#keyword#)
-   </select>
-   
-   
-   미션3 조회 ( 사원번호, 사원명, 급여, 부서번호, 입사날짜)
-   <select id = "selectMission3" resultClass="com.encore.s0808.vo.Emp">
-   		select empno, ename, sal, deptno, hiredate
-   		from emp
-   		<isNotNull property="ename">
-   		where ename like '%'||#ename#||'%'
-   		</isNotNull>
-		<isNotNull property="deptno">
-		where deptno = #deptno#		
-		</isNotNull>  		
-   </select>
-   
-   미션 4 급여 조회
-   <select id = "moreSal" resultClass="com.encore.s0808.vo.Emp">
-   		select empno, ename, sal, deptno, hiredate
-   		from emp
-   		where sal >= #sal#
-   </select>
-   
-    필터 미션 조회
-   <select id = "forFilter" resultClass="com.encore.s0809.vo.EmpVO">
-   		select empno, ename, hiredate, sal
-   		from emp
-   </select> -->
-   
 
 </sqlMap>
 

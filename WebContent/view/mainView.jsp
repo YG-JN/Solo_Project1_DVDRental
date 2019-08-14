@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 
 <script type="text/javascript">
-	
+	function join() {
+		location.href = '/view/joinView.jsp';
+	}
 </script>
 
 <style type="text/css">
@@ -14,12 +16,9 @@ body {
 	background-color: white
 }
 
-div_1
-{
+div_1 {
 	align-content: center;
-	
 }
-
 </style>
 
 
@@ -31,6 +30,8 @@ div_1
 
 <body>
 
+
+
 	<div id="div_1"
 		style="float: left; width: 100%; height: 10%; background-Color: #F1C40F">
 
@@ -38,11 +39,31 @@ div_1
 
 		<h3>강냉이</h3>
 
-		<input type="text" id="inputEmail" value="이메일 입력" /> <input
-			type="password" id="inputPass" value="비밀번호 입력" /> <input
-			type="button" id="loginButton" value="로그인"> <input
-			type="button" id="joinButton" value="회원가입">
+		<form action="/dvdProject/control?action=login" method="post">
+			<%
+				String name = (String) session.getAttribute("name");
 
+				if ("success".equals(session.getAttribute("login"))) {
+					session.setAttribute("email", session.getAttribute("info"));
+
+					out.print("<input type='text' name='email' value='" + name + " 님 환영합니다~! '/>");
+					out.print("<input type='submit' name='email' value='logout'/>");
+					out.print("<input type='submit' name='email' value='MY'/>");
+					out.print("<input type='button' name='category' value='영화예매' action='/dvdProject/control?action=category' method='post'/>");
+			%>
+			<%
+				} else {
+			%>
+			<input type="text" name="email" placeholder="이메일 입력" /> 
+			<input
+				type="password" name="pass" placeholder="비밀번호 입력" /> 
+				<input
+				type="submit" name="loginButton" value="로그인"> <input
+				type="button" id="joinButton" value="회원가입" onclick="join()">
+		</form>
+		<%
+			}
+		%>
 	</div>
 
 	<div
