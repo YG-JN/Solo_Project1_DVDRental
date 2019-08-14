@@ -79,8 +79,11 @@ public class DvdController extends HttpServlet {
 				System.out.println("카테고리 고고");
 				DvdDAO dao = new DvdDAO();
 				List<MovieVO> movieList = dao.AllMovieInfo();
+				System.out.println("영화 갯수:" + movieList.size());
 				req.getSession().setAttribute("list", movieList);
 				resp.sendRedirect("/view/categoryView.jsp");
+				
+				
 			}
 
 		} catch (Exception e) {

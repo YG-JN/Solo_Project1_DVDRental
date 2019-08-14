@@ -4,75 +4,83 @@ import java.util.Date;
 
 public class MovieVO 
 {
-	private int MovieNum;
-	private String MovieGenre;
-	private String MovieName;
-	private String MovieDirector;
-	private String MovieActor;
-	private Date MovieOpenDate;
+	private int movieNum;
+	private String movieGenre;
+	private String movieName;
+	private String movieDirector;
+	private String movieActor;
+	private Date movieOpenDate;
 	
 	public MovieVO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MovieVO(int movieNum, String movieGenre, String movieName, String movieDirector, String movieActor,
-			Date movieOpenDate) {
-		super();
-		MovieNum = movieNum;
-		MovieGenre = movieGenre;
-		MovieName = movieName;
-		MovieDirector = movieDirector;
-		MovieActor = movieActor;
-		MovieOpenDate = movieOpenDate;
-	}
-
 	public int getMovieNum() {
-		return MovieNum;
+		return movieNum;
 	}
 
 	public void setMovieNum(int movieNum) {
-		MovieNum = movieNum;
+		this.movieNum = movieNum;
 	}
 
 	public String getMovieGenre() {
-		return MovieGenre;
+		return movieGenre;
 	}
 
 	public void setMovieGenre(String movieGenre) {
-		MovieGenre = movieGenre;
+		this.movieGenre = movieGenre;
 	}
 
 	public String getMovieName() {
-		return MovieName;
+		return movieName;
 	}
 
 	public void setMovieName(String movieName) {
-		MovieName = movieName;
+		this.movieName = movieName;
 	}
 
 	public String getMovieDirector() {
-		return MovieDirector;
+		return movieDirector;
 	}
 
 	public void setMovieDirector(String movieDirector) {
-		MovieDirector = movieDirector;
+		this.movieDirector = movieDirector;
 	}
 
 	public String getMovieActor() {
-		return MovieActor;
+		return movieActor;
 	}
 
 	public void setMovieActor(String movieActor) {
-		MovieActor = movieActor;
+		this.movieActor = movieActor;
 	}
 
 	public Date getMovieOpenDate() {
-		return MovieOpenDate;
+		return movieOpenDate;
 	}
 
 	public void setMovieOpenDate(Date movieOpenDate) {
-		MovieOpenDate = movieOpenDate;
+		this.movieOpenDate = movieOpenDate;
 	}
+
 	
+	public MovieVO(int movieNum, String movieGenre, String movieName, String movieDirector, String movieActor,
+			Date movieOpenDate) {
+		super();
+		this.movieNum = movieNum;
+		this.movieGenre = movieGenre;
+		this.movieName = movieName;
+		this.movieDirector = movieDirector;
+		this.movieActor = movieActor;
+		this.movieOpenDate = movieOpenDate;
+	}
+
+	@Override
+	public String toString() {
+		return "MovieVO [movieNum=" + movieNum + ", movieGenre=" + movieGenre + ", movieName=" + movieName
+				+ ", movieDirector=" + movieDirector + ", movieActor=" + movieActor + ", movieOpenDate=" + movieOpenDate
+				+ "]";
+	}
+
 	
 }

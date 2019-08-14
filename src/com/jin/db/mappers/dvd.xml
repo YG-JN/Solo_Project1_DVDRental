@@ -24,8 +24,7 @@
 
 	<select id="AllMovieTitle" resultClass="com.jin.vo.MovieVO">
 		select MovieName
-		from
-		MovieTable
+		from MovieTable
 	</select>
 
 	<select id="AllMovieInfo" resultClass="com.jin.vo.MovieVO">

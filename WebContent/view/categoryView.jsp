@@ -38,15 +38,15 @@ td,th{padding: 5px}
 				<th>주연배우</th>
 				<th>개봉일</th>
 			</tr>
-			<c:forEach items="list" var="movieList">
+			<c:forEach items="${list }" var="movie">
 			<tr>
-				<td>${movieList.MovieNum }</td>
-				<td>${movieList.MovieGenre }</td>
-				<td>${movieList.MovieName }</td>
-				<td>${movieList.MovieDirector }</td>
-				<td>${movieList.MovieActor }</td>
-				<td>${movieList.MovieOpenDate }</td>
-				<td><input type="button" value="구매"/></td>
+				<td>${movie.movieNum }</td>
+				<td>${movie.movieGenre }</td>
+				<td>${movie.movieName }</td>
+				<td>${movie.movieDirector }</td>
+				<td>${movie.movieActor }</td>
+				<td><fmt:formatDate value="${movie.movieOpenDate }" pattern="yyyy-MM-dd"/>  </td>
+				<td><input type="button" value="구매"/></td> 
 			</tr>
 			</c:forEach>
 			

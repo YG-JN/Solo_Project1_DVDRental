@@ -49,21 +49,22 @@ div_1 {
 					out.print("<input type='text' name='email' value='" + name + " 님 환영합니다~! '/>");
 					out.print("<input type='submit' name='email' value='logout'/>");
 					out.print("<input type='submit' name='email' value='MY'/>");
-					out.print("<input type='button' name='category' value='영화예매' action='/dvdProject/control?action=category' method='post'/>");
 			%>
 			<%
 				} else {
 			%>
-			<input type="text" name="email" placeholder="이메일 입력" /> 
-			<input
-				type="password" name="pass" placeholder="비밀번호 입력" /> 
-				<input
+			<input type="text" name="email" placeholder="이메일 입력" /> <input
+				type="password" name="pass" placeholder="비밀번호 입력" /> <input
 				type="submit" name="loginButton" value="로그인"> <input
 				type="button" id="joinButton" value="회원가입" onclick="join()">
 		</form>
+
 		<%
 			}
 		%>
+		<form action='/dvdProject/control?action=category' method='post'>
+			<input type='submit' value='예매' />
+		</form>
 	</div>
 
 	<div
